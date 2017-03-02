@@ -68,3 +68,30 @@
 
     get 't1' , '456', {COLUMN => 'f1:name',VERSIONS => 2,TIMERANGE => [0,1485493181466] }
 
+### 4. Create a new table called ‘drug_stock’ , with the following columns - pre-split as regions : A-G , G-M, M-R , R-W , W-Z
+
+Row Key:  drug_name
+pharma_name
+Generic_name 
+Manufacture_year
+Expiry_date
+Price
+Qty
+
+
+create 'drug_stock','info',SPLITS=>['G','M','R','W']
+
+scan 'hbase:meta',{COLUMNS=>'info:server',FILTER=>"PrefixFilter('drug_stock')"}
+scan 'hbase:meta',{COLUMNS=>'info:regioninfo',FILTER=>"PrefixFilter('drug_stock')"}
+
+put 'drug_stock','PARACITAMOL','info:pharma_name','novartis'
+put 'drug_stock','PARACITAMOL','info:price',59
+put 'drug_stock','PARACITAMOL','info:price',70
+
+put 'drug_stock','VICKS','info:pharma_name','drreddys'
+put 'drug_stock','VICKS','info:price',105
+
+put 'drug_stock','cetrizine','info:pharma_name','glaxo'
+put 'drug_stock','cetrizine','info:price',40
+
+
