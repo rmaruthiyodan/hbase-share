@@ -85,9 +85,9 @@
     > scan 'hbase:meta',{COLUMNS=>'info:server',FILTER=>"PrefixFilter('drug_stock')"}
     > scan 'hbase:meta',{COLUMNS=>'info:regioninfo',FILTER=>"PrefixFilter('drug_stock')"}
 
-    put 'drug_stock','PARACITAMOL','info:pharma_name','novartis'
-    put 'drug_stock','PARACITAMOL','info:price',59
-    put 'drug_stock','PARACITAMOL','info:price',70
+    put 'drug_stock','PARACETAMOL','info:pharma_name','novartis'
+    put 'drug_stock','PARACETAMOL','info:price',59
+    put 'drug_stock','PARACETAMOL','info:price',70
 
     put 'drug_stock','VICKS','info:pharma_name','drreddys'
     put 'drug_stock','VICKS','info:price',105
